@@ -1,0 +1,2 @@
+#!/bin/bash
+ffmpeg -y -hwaccel nvdec -c:v h264_cuvid -vsync 0 -i /media/dh/HDD/sample_data/videos/SeoulHongikUnivStreetViewWalk_5mintrim_1080p.mp4 /media/dh/HDD/sample_data/videos/seoul_frames/ffmpeg_%03d.bmp
