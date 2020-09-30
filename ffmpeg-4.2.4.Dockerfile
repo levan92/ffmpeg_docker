@@ -42,10 +42,10 @@ RUN apt-get install -y \
 RUN apt-get install -y libchromaprint1 libchromaprint-dev frei0r-plugins-dev gnutls-bin ladspa-sdk libavc1394-0 libavc1394-dev libiec61883-0 libiec61883-dev libass-dev libbluray-dev libbs2b-dev libcaca-dev libgme-dev libgsm1-dev libopenmpt-dev libopus-dev libpulse-dev librsvg2-dev librubberband-dev libshine-dev libsnappy-dev libsoxr-dev libspeex-dev libtwolame-dev libvpx-dev libwavpack-dev libwebp-dev libx265-dev libx264-dev libzmq3-dev libzvbi-dev libopenal-dev libomxil-bellagio-dev libcdio-dev libcdio-paranoia-dev libsdl2-dev libmp3lame-dev libssh-dev libtheora-dev libxvidcore-dev
 
 # Compiling NVIDIA Headers ("ffnvcodec")
-# RUN git clone https://git.videolan.org/git/ffmpeg/nv-codec-headers.git &&\
-#     cd nv-codec-headers &&\
-#     make install &&\
-#     cd .. && rm -r nv-codec-headers
+RUN git clone https://git.videolan.org/git/ffmpeg/nv-codec-headers.git &&\
+    cd nv-codec-headers &&\
+    make install &&\
+    cd .. && rm -r nv-codec-headers
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y tzdata python3-tk
 ENV TZ=Asia/Singapore
@@ -75,13 +75,6 @@ RUN pip3 install --no-cache-dir \
     python-dotenv==0.14.0
 
 RUN pip3 install --no-cache-dir opencv-python==4.4.0.44
-
-# Compiling NVIDIA Headers ("ffnvcodec")
-RUN git clone https://git.videolan.org/git/ffmpeg/nv-codec-headers.git &&\
-    cd nv-codec-headers &&\
-    make install &&\
-    cd .. && rm -r nv-codec-headers
-
 
 # INSTALL FFMPEG
 RUN git clone https://git.ffmpeg.org/ffmpeg.git &&\
